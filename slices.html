@@ -61,7 +61,7 @@ DIV.book-center {
     text-align: justify;
 	position: relative;
 	width: 100%;
-	padding: 12px 100px 14px 30px;
+	padding: 7px 102px 7px 32px;
 }
 
 DIV.book-center > IMG.book-center-background {
@@ -92,6 +92,10 @@ DIV.book-bottom {
 	background: url('/facade/book-slices/bottom.jpg') no-repeat;
 }
 
+DIV.content {
+    border: 1px solid rgba(0,0,0,.2);
+}
+
 P {
 	margin: .25em 1em;
 	text-indent: 2em;
@@ -107,7 +111,7 @@ H1 {
 	line-height: 133%;
 	font-weight: normal;
 	text-align: center;
-	border-bottom: 2px solid rgba(0,0,0,.6);
+	border-bottom: 2px solid rgba(0,0,0,.4);
 }
 
 SPAN.event {
@@ -133,7 +137,7 @@ DIV.fancyborder {
 DIV.fancyborder > DIV {
 	position: absolute;
 	border-style: solid;
-	border-color: rgba(0,0,0,.6);
+	border-color: rgba(0,0,0,.2);
 	border-radius: 10px 10px 10px 10px;
 	behavior: url('/facade/PIE.htc');
 }
@@ -183,12 +187,14 @@ DIV.fancyborder > DIV.fancyborder-left {
             <div class='fancyborder-left'> </div>
         </div>
         <img class='book-center-background' src='/facade/book-slices/center.jpg'>
-        <h1>Making Spotlight Tolerable</h1>
-        <p>The Mac OS X Spotlight menu (the blue circle in the upper right corner of the screen) is incredibly annoying.  You decide to use Spotlight to find something, so you click the menu or press <nobr>⌘ Space</nobr>, you type your search string, and then you remember how annoyingly slow Spotlight is.  And you can't decide to do anything else on the computer while you're waiting, because clicking anywhere else will abandon the search.
-    
-        <p>The key to making Spotlight useful is to change Command-Space to pop up the Spotlight <i>window</i> instead of the Spotlight <i>menu</i>.  The window can perform a search while you're doing things in other windows - the menu can't.  So the frustrating slowness of Spotlight becomes tolerable because you're not locked out of your Mac while waiting for the search results.
-    
-        <p>You can change the mapping by opening System Preferences.  Click on Keyboard &amp; Mouse.  Then click the Keyboard Shortcuts tab.  Scroll down a bit to the Spotlight section.  Uncheck the checkbox next to “Show Spotlight search field”.  Double-click the shortcut area at the right end of the line that says “Show Spotlight window” and then press Command-Space (or whatever you want to use).  Now, pressing Command-Space will open the Spotlight window with the insertion point right in the search field, waiting for your input.  While waiting for the results, you can work in other windows.
+        <div class='content'>
+            <h1>Making Spotlight Tolerable</h1>
+            <p>The Mac OS X Spotlight menu (the blue circle in the upper right corner of the screen) is incredibly annoying.  You decide to use Spotlight to find something, so you click the menu or press <nobr>⌘ Space</nobr>, you type your search string, and then you remember how annoyingly slow Spotlight is.  And you can't decide to do anything else on the computer while you're waiting, because clicking anywhere else will abandon the search.
+        
+            <p>The key to making Spotlight useful is to change Command-Space to pop up the Spotlight <i>window</i> instead of the Spotlight <i>menu</i>.  The window can perform a search while you're doing things in other windows - the menu can't.  So the frustrating slowness of Spotlight becomes tolerable because you're not locked out of your Mac while waiting for the search results.
+        
+            <p>You can change the mapping by opening System Preferences.  Click on Keyboard &amp; Mouse.  Then click the Keyboard Shortcuts tab.  Scroll down a bit to the Spotlight section.  Uncheck the checkbox next to “Show Spotlight search field”.  Double-click the shortcut area at the right end of the line that says “Show Spotlight window” and then press Command-Space (or whatever you want to use).  Now, pressing Command-Space will open the Spotlight window with the insertion point right in the search field, waiting for your input.  While waiting for the results, you can work in other windows.
+        </div>
     </div>
     <div class='book-footer'><div class='margins'>Rob Mayoff, Publisher</div></div>
     <div class='book-bottom'></div></div>
