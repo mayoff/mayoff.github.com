@@ -1,0 +1,50 @@
+/* @override http://localhost:4000/page.css */
+
+* {
+    box-sizing: border-box;
+}
+
+HTML {
+    -webkit-text-size-adjust: auto;
+}
+
+BODY {
+    font: 16px/24px 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Verdana, sans-serif;
+    text-rendering: optimizeLegibility;
+    color: #111;
+    background: #f5f5f5;
+}
+
+ARTICLE {
+    margin-left: .5in;
+}
+
+ARTICLE P, ARTICLE DIV.center {
+    min-width: 2in;
+    max-width: 5in;
+}
+
+.center {
+    text-align: center;
+}
+
+CODE {
+    font-size: 14px;
+}
+
+PRE {
+    font-size: 14px;
+    line-height: 18px;
+    overflow-x: scroll;
+    margin: 12px;
+    border: 1px solid #777;
+    padding: 12px;
+    background-color: #fff;
+    min-width: 2in;
+    max-width: 5in;
+}
+
+PRE:hover {
+    max-width: none;
+}
+
