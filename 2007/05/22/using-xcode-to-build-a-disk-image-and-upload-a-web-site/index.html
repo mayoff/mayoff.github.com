@@ -2,16 +2,17 @@
 <meta charset=utf-8>
 <title>Using Xcode to build a disk image (and upload a web site)</title>
 <link rel='stylesheet' href='/facade/normalize.css'>
-<link rel='stylesheet' href='/facade/post.css'>
+<link rel='stylesheet' href='/facade/site.css'>
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
-</head>
-<body>
-<h1>Using Xcode to build a disk image (and upload a web site)</h1>
-<article>
-<p>So I wrote a MacOS X screen saver, <a href='http://dqd.com/~mayoff/programs/FractalClock'>Fractal Clock</a>.  The next thing to do is make it available to the general public.  Apple <a href='http://developer.apple.com/documentation/DeveloperTools/Conceptual/SoftwareDistribution/Containers/chapter_3_section_1.html#//apple_ref/doc/uid/10000145i-CH4-SW4'>recommends</a> distributing software using disk images.</p>
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+<div id='page'>
+    <div id='content'>
+        <h1>Using Xcode to build a disk image (and upload a web site)</h1>
+        <div id='contentBody'>
+    <p>So I wrote a MacOS X screen saver, <a href='http://dqd.com/~mayoff/programs/FractalClock'>Fractal Clock</a>.  The next thing to do is make it available to the general public.  Apple <a href='http://developer.apple.com/documentation/DeveloperTools/Conceptual/SoftwareDistribution/Containers/chapter_3_section_1.html#//apple_ref/doc/uid/10000145i-CH4-SW4'>recommends</a> distributing software using disk images.</p>
 
 <p>I could build the disk image using Disk Utility, but if I need to do so often, using Disk Utility will be tedious.  And if I need to do so rarely, I'll forget the steps.  Obviously I should automate the process.</p>
 
@@ -76,6 +77,6 @@ rsync -avz "web/." "www.dqd.com:www/programs/FractalClock/."</pre>
 
 <p>Now, when I right-click on the "Web Site" target and choosing "Build Web Site", Xcode builds both the application and source disk images, and copies them and the web files to my web site.  What could be simpler?</p>
 
-</article>
-</body>
-</html>
+        </div>
+    </div>
+</div>
