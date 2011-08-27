@@ -66,11 +66,11 @@ PRE {
     margin: 12px;
     border: 1px solid #777;
     padding: 12px;
-    background-color: #fff;
+    behavior: url('/facade/PIE.htc');
     -webkit-border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat;
     -moz-border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat;
     -o-border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat;
-    border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat;
+    border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat fill;
     word-wrap: normal;
     white-space: pre;
 }
@@ -88,7 +88,7 @@ PRE {
     -webkit-box-shadow: #aaa 0px 5px 6px;
     -moz-box-shadow: #aaa 0px 5px 6px;
     box-shadow: #aaa 0px 5px 6px;
-    behavior: url('/PIE.htc');
+    behavior: url('/facade/PIE.htc');
 
     text-align: center;
     border:  1px solid #bbb;
