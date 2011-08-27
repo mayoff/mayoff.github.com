@@ -42,11 +42,23 @@ A:hover {
     font-size: 12px;
 }
 
+/* Can't just use #index as the selector because it wouldn't override. */
+#contentBody #index {
+    max-width: none;
+}
+
+#index .date {
+    display: inline-block;
+    width: 8em;
+    font-size: 12px;
+    color: gray;
+}
+
 P {
     text-indent: 2em;
 }
 
-#content H1, #contentBody P, #contentBody DIV {
+#content > H1, #contentBody > P, #contentBody > DIV {
     min-width: 2in;
     max-width: 5in;
 }
