@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Typing ⟦ and ⟧ in Mathematica</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>Typing ⟦ and ⟧ in Mathematica</h1>
+
+<span class='postDate'>2009-03-26</span>
+
+<div id='contentBody'>
+<p>Mathematica uses doubled brackets for indexing: "x[[1]]" means the first element of x.  It also supports special characters for indexing; they look like "x〚1〛".  The special characters are nice because they take less space (when displayed by Mathematica) and look quite different.</p>
+<p>To type the special characters in Mathematica, you have to press ␛[[␛ and ␛]]␛. I found <a href="http://web.ift.uib.no/~szhorvat/mmatricks.php">a tip for typing them more easily</a>.  Add these lines to KeyEventTranslations.tr:</p>
+<pre><code>Item[KeyEvent["[", Modifiers -&gt; {Control}],
+    FrontEndExecute[{FrontEnd`NotebookWrite[FrontEnd`InputNotebook[],
+        "\[LeftDoubleBracket]", After]}]],
+Item[KeyEvent["]", Modifiers -&gt; {Control}],
+    FrontEndExecute[{FrontEnd`NotebookWrite[FrontEnd`InputNotebook[],
+        "\[RightDoubleBracket]", After]}]],
+</code></pre>
+<p>This lets you type control-[ to insert 〚 and control-] to insert 〛.</p>
+<p>I don't know why Mathematica uses 〚 and 〛 (which are characters x301a and x301b from the CJK Symbols and Punctuation range) instead of ⟦ and ⟧ (which are x27e6 and x27e7 from the Miscellanous Math Symbols-A range).</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2009/03/26/typing-e29fa6-and-e29fa7-in-mathematica/';
+        
+        var disqus_identifier = '171';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

@@ -1,0 +1,79 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Tracing message sends in Objective-C</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>Tracing message sends in Objective-C</h1>
+
+<span class='postDate'>2005-10-30</span>
+
+<div id='contentBody'>
+<p><b>Update:</b> It turns it there's a much easier, more reliable way to see every Objective-C message send.  So ignore the rest of this post and read about <code>NSObjCMessageLoggingEnabled</code> in <a href="http://developer.apple.com/technotes/tn2004/tn2124.html#SECOBJECTIVEC">TN2124</a>.</p>
+<hr>
+
+<p>So now I'm trying to get bindings working when I put my <code>NSCell</code> subclass in a table column.  It appears, for the standard <code>NSCell</code> subclasses, that NSTableColumn looks at the subclass's exposed bindings and re-exposes them on itself.  However, it's not doing that for my <code>NSCell</code> subclass's bindings.</p>
+<p>So, I want to trace the messages that are flying around inside Interface Builder to see if I can figure out how <code>NSTableColumn</code> decides what bindings to expose.  Ideally I'd have a little dynamic library with a logging version of <code>objc_msgSend</code> and I could get Interface Builder to run using that.  I don't have that (yet).  I found <a href='http://groups.google.com/group/comp.sys.next.programmer/browse_frm/thread/ff810961be967d0e/7cb72c89445a0040#7cb72c89445a0040'>this old Usenet post</a> from a NeXT engineer showing how to trace <code>objc_msgSend</code> using GDB.  That will be much slower than smashing in a logging version of <code>objc_msgSend</code>, but it's better than nothing.</p>
+<p>Of course, the GDB command in that Usenet post is for NEXTSTEP running on Intel.  It'll probably work on MacOS X running on Intel, but my Powerbook has a PowerPC processor.  Also, Apple introduced a new message-send function in Tiger, so you have to set two breakpoints.  These commands work on MacOS X on PowerPC:</p>
+<pre><code>b objc_msgSend
+comm
+silent
+printf "%c[%s %s]\n", $r3&amp;&amp;((id)$r3)-&gt;isa-&gt;info&amp;2?'+':'-', $r3?((id)$r3)-&gt;isa-&gt;name:"nil", $r4
+cont
+end
+b objc_msgSend_rtp
+comm
+silent
+printf "%c[%s %s]\n", $r3&amp;&amp;((id)$r3)-&gt;isa-&gt;info&amp;2?'+':'-', $r3?((id)$r3)-&gt;isa-&gt;name:"nil", $r4
+cont
+end
+</code></pre>
+<p>Here's some sample output from GDB, tracing the first few messages sent in <code>-[NSObject exposedBindings]</code>:</p>
+<pre><code>-[NSTableColumn _bindingAdaptor]
++[NSBinder binderClassesForObject:]
++[NSBinder _allBinderClasses]
++[NSDisplayPatternTitleBinder isUsableWithObject:]
++[NSBox self]
+-[NSTableColumn isKindOfClass:]
++[NSWindow self]
+-[NSTableColumn isKindOfClass:]
++[NSWindowTemplate self]
+-[NSTableColumn isKindOfClass:]
++[NSTableBinder isUsableWithObject:]
++[NSTableView self]
+-[NSTableColumn isKindOfClass:]
++[NSObjectParameterBinder isUsableWithObject:]
++[NSObjectParameterBinder binderClassesSuperseded]
++[NSArray array]
++[NSArray allocWithZone:]
+</code></pre>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2005/10/30/tracing-message-sends-in-objective-c/';
+        
+        var disqus_identifier = '29';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

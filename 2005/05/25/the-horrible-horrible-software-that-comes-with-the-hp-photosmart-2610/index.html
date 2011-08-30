@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>the horrible, horrible software that comes with the HP Photosmart 2610</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>the horrible, horrible software that comes with the HP Photosmart 2610</h1>
+
+<span class='postDate'>2005-05-25</span>
+
+<div id='contentBody'>
+<p>I bought Delia a new PowerBook from the online Apple Store.  They offered a $100 rebate for a number of printers.  It would be convenient to have a copier and a fax machine, and might be nice to print photographs, so I chose the HP Photosmart 2610 all-in-one.  I read some reviews first, and there were complaints about difficulty installing the software.  I assumed those complaints were for the Windows software.  "That won't be a problem for me because we use Macs," I smugly thought.</p>
+<p>Boy, was I wrong.  The HP software sucks.</p>
+<p>The software installer insisted on quitting all my other applications.  OK, that's somewhat minor, but an annoyance.</p>
+<p>Then, after it installed the software, it launched the HP All-in-One Setup Assistant.  The setup assistant crashed one or two screens in.  Joy.</p>
+<p>"Maybe," I thought, "it needs to be rebooted to work.  The developers were obviously not very good, so maybe they forgot to program that in."  So I rebooted.  The setup assistant started automatically when I logged in.</p>
+<p>The setup assistant didn't crash this time.  I did start getting mysterious pop-up messages informing me that "The automatic document feeder is empty."  Of course, I wasn't trying to scan anything - I was still trying to set up the printer.  Furthermore, my 2610 has no automatic document feeder.  In fact, <b>the 2610 does not support an automatic document feeder.</b></p>
+<p>Anyway, ignoring those messages, I proceeded through the setup assistant.  It apparently set up the fax support successfully, then launched Apple's Printer Setup Utility for me.  Unfortunately, I could not set up the printer because the setup utility thought the printer was an "Unsupported Printer" and there was no option for the printer in the pop-up list of drivers.</p>
+<p>Checking the HP support website revealed no new software to download.</p>
+<p>So I uninstalled all of the HP software to try again.  I must say that the uninstaller worked great.  HP sure knows how to uninstall its crapware.</p>
+<p>On the second install, I manually quit all of my other applications first.  It didn't help.  The setup assistant didn't crash, but I still couldn't set up the printer.</p>
+<p>I checked HP's support website again.  One of the very few FAQs commanded that I disable all startup items.  It didn't give detailed directions, just pointed me at the <code>/Library/StartupItems</code> folder and the Login Items pane of the Accounts preference panel.  Fortunately I know how to become root and move things around, so I was able to move all of the items out of <code>/Library/StartupItems</code> and I made a backup of my <code>~/Library/Preferences/loginwindow.plist</code> before removing all of my Login Items using System Preferences.</p>
+<p>Then I uninstalled the HP crapware, rebooted, and installed it again.  Miracle!  This time the Printer Setup Utility identified the printer and offered to use the HP All-in-One driver (which still didn't appear in the pop-up list of drivers, as far as I could tell).</p>
+<p>Of course, I was still getting that "The automatic document feeder is empty" message every minute or two.</p>
+<p>More searching revealed (in some HP support forums) that others have had this problem, with other HP printers.  One poster said that turning the printer (not a 2610, some other model) off and on fixed the problem.  That appears to work.</p>
+<p>However, if I reboot, the HP All-in-One Setup Assistant runs again, and the message comes back!  Each time the setup assistant runs, it re-enables the printer's brain damage.  I never managed to get the Setup Assistant to agree that I had run it to completion, although I don't know why.  Ultimately I renamed the application.  I haven't rebooted since doing that so I don't know if that will prevent it from starting up after I do.</p>
+<p>So, in closing, HP's software was written by retards and tested by retards.  Kids, don't do drugs.</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2005/05/25/the-horrible-horrible-software-that-comes-with-the-hp-photosmart-2610/';
+        
+        var disqus_identifier = '16';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

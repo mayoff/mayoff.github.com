@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>handy bash alias</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>handy bash alias</h1>
+
+<span class='postDate'>2005-04-07</span>
+
+<div id='contentBody'>
+<p>Often I run some command that's going to take a long time to finish, like</p>
+<pre><code>make solver
+</code></pre>
+<p>and when it's done I want to run some other command, like</p>
+<pre><code>./solver &lt; problem.1
+</code></pre>
+<p>but I only want to run that second command if the first command (the <code>make</code> in this example) succeeded.  If I'd thought ahead, I could have run this in the first place:</p>
+<pre><code>make solver &amp;&amp; ./solver &lt; problem.1
+</code></pre>
+<p>But I didn't.  So I have this handy <code>bash</code> alias:</p>
+<pre><code>alias +='(exit $?) &amp;&amp; '
+</code></pre>
+<p>Which gives me a similar effect.  I run the first command (the <code>make</code>), and <em>while it's running</em> I type in a plus followed by the second command:</p>
+<pre><code>+ ./solver &lt; problem.1
+</code></pre>
+<p>If the first command finishes, the second command will run.  Otherwise, the second command will be ignored.</p>
+<p>Note that this only works if the first command doesn't read from standard input.</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2005/04/07/handy-bash-alias/';
+        
+        var disqus_identifier = '11';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

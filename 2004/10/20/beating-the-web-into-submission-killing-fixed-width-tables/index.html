@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Beating the web into submission: killing fixed-width tables</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>Beating the web into submission: killing fixed-width tables</h1>
+
+<span class='postDate'>2004-10-20</span>
+
+<div id='contentBody'>
+<p>Another big problem with a lot of web sites is that they use tables to force the content down to a narrow column.  Oh how I hate that.  It's quite popular, though.  yahoo.com, nytimes.com, audible.com...</p>
+<p>It's particularly bad when I'm using my T221, because then I'm using 32 pixel fonts, so a website that uses a 400px column gives me about 5 words (or less) per line, and huge expanses of empty margin.  Useless!</p>
+<p>My first approach to fixing this was another bookmarklet:</p>
+<pre><code>javascript:void((function(){function doit(es){for(var i=0;i&lt;es.length;++i)if('width' in es[i])es[i].width='auto';}doit(document.getElementsByTagName('TABLE'));doit(document.getElementsByTagName('TBODY'));doit(document.getElementsByTagName('THEAD'));doit(document.getElementsByTagName('TFOOT'));doit(document.getElementsByTagName('TR'));doit(document.getElementsByTagName('TD'));doit(document.getElementsByTagName('TH'));})())
+</code></pre>
+<p>But it's pretty annoying to have to hit the bookmarklet all the time (or to use a location bar keyword).  So I'm trying a different experiment.  I put this in my <a href="http://www.mozilla.org/unix/customizing.html">userContent.css</a>:</p>
+<pre><code>TABLE,TD,TR,TBODY,THEAD,TFOOT {
+    width: auto ! important;
+}
+</code></pre>
+<p>So far, it's bliss.</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2004/10/20/beating-the-web-into-submission-killing-fixed-width-tables/';
+        
+        var disqus_identifier = '8';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

@@ -1,0 +1,53 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>New toy: Okidata C5650dn printer</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>New toy: Okidata C5650dn printer</h1>
+
+<span class='postDate'>2009-01-30</span>
+
+<div id='contentBody'>
+<p>Maybe ten years ago, I wanted a printer.  My requirements were laser, duplex, reasonably fast, Ethernet, and PostScript.  The cheapest printer that met all of these requirements was the <a href="http://printers.necsam.com/main.cfm?thePage=http://printers.necam.com/public/printers/splash_page/1800.htm&amp;SP=365">NEC SuperScript 1800n</a>.</p>
+<p>A few months ago, the SuperScript stopped printing.  I was able to get by with my HP PhotoSmart 2610 all-in-one, but I missed the speed, duplexing, and text quality of the laser printer.  So I've had my eye out for a new laser printer.  My requirements now are almost the same as they were 10 years ago, except that I want color, and I want Mac compatibility rather than PostScript specifically.</p>
+<p>The <a href="http://www.okidata.com/mkt/html/nf/c5650home.html">Okidata C5650dn</a> seemed to be just what I wanted, for <a href="http://www.amazon.com/gp/product/B001A34IBS">about $625 with shipping through Amazon</a>, so I ordered it a couple of days ago.  The actual seller was <a href="http://tekgalaxy.com/">Technology Galaxy</a>.</p>
+<p>This morning, UPS left a box on my porch.  The box said Okidata on the outside.  Unfortunately, it didn't say C5650dn.  It said it was an <a href="http://esales.okidata.com/IWCatProductPage.process?Merchant_Id=1&amp;Section_Id=79&amp;pcount=1&amp;Product_Id=1102994">option tray</a>.</p>
+<p><a href="http://www.flickr.com/photos/mayoff/3237056065/in/set-72157613135228256/"><img class="alignnone" title="Box" src="http://farm4.static.flickr.com/3259/3237056065_1c75c1a582_s.jpg" alt="" width="75" height="75" /></a> <a href="http://www.flickr.com/photos/mayoff/3237897218/in/set-72157613135228256/"><img class="alignnone" title="Label" src="http://farm4.static.flickr.com/3105/3237897218_358116ece1_s.jpg" alt="" width="75" height="75" /></a></p>
+<p>I called the seller (Technology Galaxy) about it.  They were already aware that they'd shipped the wrong thing and had shipped the printer.  He gave me the UPS tracking number for the printer, which was already out for delivery on another UPS truck, and told me to give the option tray to the UPS guy when I received the printer.  He also noted my account to get a discount on my next two orders with them.</p>
+<p>Then he called back a few minutes later and told me to just keep the option tray because apparently they get promos on those all of the time anyway.  Whee, free option tray!</p>
+<p>So later another UPS guy came and delivered the actual printer.  It's kind of big, especially with the second paper tray.</p>
+<p><a href="http://www.flickr.com/photos/mayoff/3237058317/in/set-72157613135228256/"><img class="pc_img" src="http://farm4.static.flickr.com/3398/3237058317_57551617e4_s.jpg" alt="IMG_2582.JPG" width="75" height="75" /></a> <a href="http://www.flickr.com/photos/mayoff/3237902410/in/set-72157613135228256/"><img src="http://farm4.static.flickr.com/3404/3237902410_5f265b40ea_s.jpg" alt="" width="75" height="75" /></a></p>
+<p>Making it work on the Mac took a little work.  It showed up in the Print &amp; Fax Add Printer dialog as a Bonjour printer, but my Mac could not find a driver for it.  So I tried installing the driver from the CD-ROM that was included with the printer.  The installer told me to go to "More Printers" in the Add Printer dialog and choose "OKI TCP/IP".  I did that.  Then I had to manually enter the printer's IP address (which I had set manually using the printer's front panel so I would know it).</p>
+<p>Even after that, I could not print from the Mac to the printer.  A little web searching led me to <a href="http://belgium.oki.com/fcgi-bin/public.fcgi?pid=118&amp;prodlink=1&amp;cid=134&amp;pdflag=2&amp;prid=652&amp;prodname=C5650">a support page at Oki Belgium's web site</a> where they had Leopard-specific driver in addition to the older driver that I got from the CD-ROM.  I deleted the /Library/Printers/Okidata folder, downloaded the Leopard driver installer from Oki Belgium, and ran it.  Then I restarted System Preferences and click the Add Printer button again.  This time, when I choose the printer from the Bonjour list, it found the OKI C5650 driver.  And now I can print!</p>
+<p>The last thing I had to do was reduce the Power Save Delay Time to 5 minutes (the default is 60 minutes), because the printer's fan is kind of annoying even when it's not printing.  In Power Save, the printer is silent.</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2009/01/30/new-toy-okidata-c5650dn-printer/';
+        
+        var disqus_identifier = '108';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>

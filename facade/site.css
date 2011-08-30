@@ -16,6 +16,10 @@ BODY {
     background: #f5f5f5;
 }
 
+#disqus_thread {
+    margin-top: 1in;
+}
+
 #page {
     padding: .25in;
 }
@@ -54,11 +58,11 @@ A:hover {
     color: gray;
 }
 
-P {
+P + P {
     text-indent: 2em;
 }
 
-#content > H1, #contentBody > P, #contentBody > DIV {
+#content > H1, #contentBody > P, #contentBody > DIV, #contentBody > UL, #contentBody > OL, #disqus_thread {
     min-width: 2in;
     max-width: 5in;
 }
@@ -85,6 +89,25 @@ PRE {
     border-image: url("/facade/PRE_border.png") 1 23 4 23 / 1px 23px 4px 23px repeat repeat fill;
     word-wrap: normal;
     white-space: pre;
+}
+
+BLOCKQUOTE {
+    border: 1px solid #ccc;
+    -webkit-box-shadow: #aaa 0px 1px 2px;
+    -moz-box-shadow: #aaa 0px 1px 2px;
+    box-shadow: #aaa 0px 1px 2px;
+    border-radius: 10px 10px 10px 10px;
+    behavior: url('/facade/PIE.htc');
+    padding: .2in .2in;
+    background-color: #fefefe;
+}
+
+BLOCKQUOTE > :first-child {
+    margin-top: 0;
+}
+
+BLOCKQUOTE > :last-child {
+    margin-bottom: 0;
 }
 
 #author {

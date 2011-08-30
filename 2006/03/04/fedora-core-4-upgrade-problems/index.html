@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>fedora core 4 upgrade problems</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>fedora core 4 upgrade problems</h1>
+
+<span class='postDate'>2006-03-04</span>
+
+<div id='contentBody'>
+<p>I tried to upgrade my Thinkpad A30p from Fedora Core 3 to Fedora Core 4.  First I tried using a DVD, but apparently the A30p doesn't boot off DVDs.  Then I tried a CD and it booted that but after LILO the screen just went black; even the text mode install ("linux text" at the boot prompt) didn't fix it.  Using "linux nofb" at the boot prompt fixed that problem.</p>
+<p>Then when I told it to start the upgrade, I got an unhandled exception:</p>
+<pre>Traceback (most recent call list):
+  File "/usr/lib/anaconda/gui.py", line 1137, in handleRenderCallback
+    self.currentWindow.renderCallback()
+  File "/usr/lib/anaconda/iw/progress_gui.py", line 244, in renderCallback
+    self.intf.icw.nextClicked()
+  File "/usr/lib/anaconda/gui.py", line 873, in nextClicked
+    self.dispatch.gotoNext()
+  File "/usr/lib/anaconda/dispatch.py", line 174, in gotoNext
+    self.moveStep()
+  File "/usr/lib/anaconda/dispatch.py", line 242, in moveStep
+    rc = apply(func, self.bindArgs(args))
+  File "/usr/lib/anaconda/packages.py", line 827, in doPreInstall
+    f.close()
+IOError: [Errno 22] Invalid argument</pre>
+
+<p>This happened because I had replaced my <code>/etc/mtab</code> file with a symbolic link to <code>/proc/mounts</code>.  Anaconda (the RedHat/Fedora Core installer) tries to truncate <code>/etc/mtab</code> and could not do so.  Replacing the symbolic link with an empty file fixed this problem.</p>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2006/03/04/fedora-core-4-upgrade-problems/';
+        
+        var disqus_identifier = '32';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>
