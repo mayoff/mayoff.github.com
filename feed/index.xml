@@ -6,7 +6,15 @@
     <atom:link href='http://qwan.org/feed/' rel='self' type='application/rss+xml' />
     <description>Rob Mayoff's Blog and Stuff</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Dec 2010 06:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2011 06:00:00 +0000</lastBuildDate>
+    
+    <item>
+      <title>Reloading a page in Chrome from Aquamacs</title>
+      <link>http://qwan.org/2011/09/01/reloading-a-page-in-chrome-from-aquamacs/</link>
+      <author>qwan@rob.dqd.com (Rob Mayoff)</author>
+      <guid isPermaLink="false">/2011/09/01/reloading-a-page-in-chrome-from-aquamacs/</guid>
+      <pubDate>Thu, 01 Sep 2011 06:00:00 +0000</pubDate>
+    </item>
     
     <item>
       <title>Mathematica Home Edition 8.0 banner ad</title>

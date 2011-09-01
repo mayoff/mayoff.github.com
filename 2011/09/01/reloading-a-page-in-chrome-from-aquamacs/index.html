@@ -1,0 +1,115 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Reloading a page in Chrome from Aquamacs</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<link rel='alternate' type='application/rss+xml' title='Rob Mayoff' href='http://qwan.org/feed/'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>Reloading a page in Chrome from Aquamacs</h1>
+
+<span class='postDate'>2011-09-01</span>
+
+<div id='contentBody'>
+<p>The Emacs function <a href="http://www.emacswiki.org/emacs/BrowseUrl"><code>browse-url</code></a> tells your browser to open a URL.  It's pretty simple.  Your default browser will open the URL in a new tab or window.</p>
+<p>If we're editing a web page, we'll probably be reloading it pretty often in the browser.  I couldn't find a way to make Emacs tell our browser to <em>reload</em> a URL if the browser already has that URL open in some tab.  So let's write some elisp.</p>
+<p>This code is Mac-specific, because it relies on AppleScript to talk to the browser.  It works (for me) in both <a href="http://aquamacs.org/">Aquamacs</a> and <a href="http://emacsformacosx.com/">Emacs.app</a>.</p>
+<p>This code is also <a href="http://www.google.com/chrome">Chrome</a>-specific, because Safari has a slightly different AppleScript dictionary and Firefox isn't scriptable.</p>
+<p>So anyway, our goal is to have the visible tab of Chrome's front window show our URL.  If Chrome already has a tab in any of its windows showing the URL, it should make that tab visible, bring that window to the front, and reload that tab.  If there's no such tab, it should make one in the frontmost window.  And if Chrome doesn't have any windows open, it should make a new window.</p>
+<p>So we need an elisp function that takes a URL and does all of that, using AppleScript.  Here it is:</p>
+<pre><code>(defun mayoff:open-url-in-chrome (url)
+  "Open URL in Google Chrome.  I use AppleScript to do several things:
+  1. I tell Chrome to come to the front. If Chrome wasn't launched, this will also launch it.
+  2. If Chrome has no windows open, I tell it to create one.
+  3. If Chrome has a tab showing URL, I tell it to reload the tab, make that tab the active tab in its window, and bring its window to the front.
+  4. If Chrome has no tab showing URL, I tell Chrome to make a new tab (in the front window) showing URL."
+  (when (symbolp url)
+    ; User passed a symbol instead of a string.  Use the symbol name.
+    (setq url (symbol-name url)))
+  (do-applescript (format "
+tell application \"Google Chrome\"
+        activate
+        set theUrl to %S
+
+        if (count every window) = 0 then
+                make new window
+        end if
+
+        set found to false
+        set theTabIndex to -1
+        repeat with theWindow in every window
+                set theTabIndex to 0
+                repeat with theTab in every tab of theWindow
+                        set theTabIndex to theTabIndex + 1
+                        if theTab's URL = theUrl then
+                                set found to true
+                                exit
+                        end if
+                end repeat
+
+                if found then
+                        exit repeat
+                end if
+        end repeat
+
+        if found then
+                tell theTab to reload
+                set theWindow's active tab index to theTabIndex
+                set index of theWindow to 1
+        else
+                tell window 1 to make new tab with properties {URL:theUrl}
+        end if
+end tell
+  " url)))
+</code></pre>
+<p>Now we can evaluate an expression like</p>
+<pre><code>(mayoff:open-url-in-chrome "http://qwan.org/2011/09/01/reloading-a-page-in-google-chrome-from-emacs-on-a-mac/")
+</code></pre>
+<p>to view that URL in Chrome, reloading it if it's already loaded.</p>
+<p>Of course, we're not going to want to type all that out every time we update the page.  What we really want is a way to set a URL to be loaded, and then a way to run <code>mayoff:open-url-in-chrome</code> on that URL.  I like to put both actions on F5, using <code>C-u F5</code> to set the URL and plain <code>F5</code> to send it to the browser.  Here's the code:</p>
+<pre><code>(defvar mayoff:open-in-chrome-url nil
+  *The URL that the mayoff:open-in-chrome function will send to Google Chrome.")
+
+(defun mayoff:open-in-chrome (arg)
+  "Open or reload a file in Google Chrome.  If you give me a prefix argument, I get Chrome's currently-displayed URL and save it for the future.  If you don't give me a prefix argument, I send the previously-saved URL to Chrome for reloading."
+  (interactive "P")
+  (cond
+   (arg (setq mayoff:open-in-chrome-url (do-applescript "tell application \"Google Chrome\" to get window 1's active tab's URL")))
+   ((not mayoff:open-in-chrome-url) (error "You haven't set a URL for me to send to the browser."))
+   (t (save-buffer)
+      (mayoff:open-url-in-chrome mayoff:open-in-chrome-url))))
+
+(global-set-key (kbd "&lt;f5&gt;") 'mayoff:open-in-chrome)
+</code></pre>
+<p>Mission accomplished.</p>
+<ul>
+<li><a href="https://gist.github.com/1185476">This gist contains all of the elisp.</a></li>
+<li><a href="https://gist.github.com/1138816">This gist contains just the AppleScript.</a></li>
+</ul>
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/2011/09/01/reloading-a-page-in-chrome-from-aquamacs/';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>
