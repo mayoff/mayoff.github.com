@@ -1,0 +1,82 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>template-timing-function cheat sheet</title>
+<link rel='stylesheet' href='/facade/normalize.css'>
+<link rel='stylesheet' href='/facade/site.css'>
+<link rel='alternate' type='application/rss+xml' title='Rob Mayoff' href='http://qwan.org/feed/'>
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
+
+<a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
+
+<div id='page'>
+    <div id='content'><h1>template-timing-function cheat sheet</h1>
+
+<div id='contentBody'>
+These are graphs of the standard timing functions for <a href='http://www.w3.org/TR/css3-transitions/#transition-timing-function_tag'><code>transition-timing-function</code></a>, <code>-webkit-transition-timing-function</code>, and <code>-moz-transition-timing-function</code>.  You can also use <code>cubic-bezier(x1, y1, x2, y2)</code>.
+<div id='demos' style='
+    max-width: none;
+    width: 100%;
+'></div>
+<script type='text/x-demo-template' id='template'>
+<div style='
+    margin: 1em;
+    background-color: white;
+    display: inline-block;
+    text-align:center;
+'><canvas width=200 height=200></canvas><br><span data-id='name'></span></div>
+</script>
+<script>
+var templateHtml = document.getElementById('template');
+var nodeFactory = document.createElement('div');
+var parent = document.getElementById('demos');
+[
+    { name: 'ease', points: [ 0.25, 0.1, 0.25, 1.0 ] },
+    { name: 'linear', points: [ 0, 0, 1, 1 ] },
+    { name: 'ease-in', points: [ 0.42, 0, 1, 1 ] },
+    { name: 'ease-out', points: [ 0, 0, 0.58, 1 ] },
+    { name: 'ease-in-out', points: [ 0.42, 0, 0.58, 1 ] }
+].forEach(function (demoRecord) {
+    nodeFactory.innerHTML = templateHtml.innerText;
+    var node = nodeFactory.querySelector('div');
+    var nameNode = node.querySelector('[data-id="name"]');
+    nameNode.innerText = demoRecord.name;
+    var canvas = node.querySelector('canvas');
+    var gc = canvas.getContext('2d');
+    gc.scale(canvas.width, canvas.height);
+    gc.translate(0.05, 0.05);
+    gc.scale(.9, .9);
+    gc.translate(0, 1);
+    gc.scale(1, -1);
+    gc.lineWidth = 0.01;
+    gc.lineCap = 'round';
+    gc.moveTo(0, 0);
+    gc.bezierCurveTo.apply(gc, demoRecord.points.concat(1, 1));
+    gc.stroke();
+    parent.appendChild(node);
+});
+</script>
+
+</div>
+</div>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'robmayoff';
+        var disqus_url = 'http://qwan.org/transition-timing-function-cheat-sheet/';
+        
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</div>
