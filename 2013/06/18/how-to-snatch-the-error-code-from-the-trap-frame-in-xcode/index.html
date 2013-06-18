@@ -80,7 +80,7 @@ def __lldb_init_module(debugger, unused):
     debugger.HandleCommand('command script add --function sniff_objc_exception_throw.command sniff_objc_exception_throw')
 </code></pre>
 <p>This Python module uses the debugger's API to create a new command named <code>sniff_objc_exception_throw</code>.  You need to load the module every time the debugger runs, so edit (or create) the file <code>~/.lldbinit</code> and add the following line to it:</p>
-<pre><code>command script import ~/.../lldb/sniff_objc_exception_throw.py
+<pre><code>command script import ~/Library/lldb/sniff_objc_exception_throw.py
 </code></pre>
 <p>You can copy the code from <a href="https://gist.github.com/mayoff/5802760">this gist</a> if you prefer.</p>
 <h3>Step 4</h3>
