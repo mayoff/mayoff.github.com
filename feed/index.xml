@@ -6,7 +6,15 @@
     <atom:link href='http://qwan.org/feed/' rel='self' type='application/rss+xml' />
     <description>Rob Mayoff's Blog and Stuff</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Sep 2011 06:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Jun 2013 06:00:00 +0000</lastBuildDate>
+    
+    <item>
+      <title>How to Snatch the Error Code from the Trap Frame in Xcode</title>
+      <link>http://qwan.org/2013/06/18/how-to-snatch-the-error-code-from-the-trap-frame-in-xcode/</link>
+      <author>qwan@rob.dqd.com (Rob Mayoff)</author>
+      <guid isPermaLink="false">/2013/06/18/how-to-snatch-the-error-code-from-the-trap-frame-in-xcode/</guid>
+      <pubDate>Tue, 18 Jun 2013 06:00:00 +0000</pubDate>
+    </item>
     
     <item>
       <title>Reloading a page in Chrome from Aquamacs</title>

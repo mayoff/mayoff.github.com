@@ -8,6 +8,7 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
+
 <script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-25371980-3"]);_gaq.push(["_setDomainName",".qwan.org"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()</script>
 
 <a id='indexLink' href='/'>⬅ Back to Rob Mayoff's Site Index</a>
@@ -42,8 +43,7 @@ hdiutil internet-enable -yes "&#36;dmg"
 rm -rf "&#36;dir"</pre>
 
 <p>I click the plus button under the Input Files list and set the name to <code>&#36;(BUILT<wbr>&#95;PRODUCTS<wbr>&#95;DIR)/<wbr>FractalClock<wbr>.saver</code>.  Then I click the plus button under the Output Files list and set the name to <code>&#36;(BUILT<wbr>&#95;PRODUCTS<wbr>&#95;DIR)<wbr>/FractalClock<wbr>.dmg</code>.  The pane ends up looking like this:</p>
-<img src='script-1.png' width='507 height='652 />
-
+<p><img src='script-1.png' width='507 height='652 /></p>
 <p>Now I can build a disk image containing FractalClock.saver by right-clicking on the FractalClock.dmg target and choosing "Build FractalClock.dmg".  The resulting disk image (found in the <code>build/Release</code> subdirectory) is Internet-enabled, so if I put it on the web and a visitor downloads it with Safari, Safari will automatically unpack FractalClock.saver and put the disk image in the Trash.</p>
 <p>I also want to build a disk image containing the FractalClock source code.  So I create another target, named FractalClock-source.dmg.  It doesn't have any direct dependencies.  I could make all of the source files be its direct dependencies, but that's too much work.  At any rate, I want the contents of the disk image to be a pristine copy of the source code, without any of the build files.  Since I'm keeping the source code in Subversion, I'll make the shell script for FractalClock-source.dmg check out a fresh copy of the source tree.  Here's the script:</p>
 <pre>set -ex
